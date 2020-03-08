@@ -13,7 +13,8 @@ func findMedianSortedArrays_1(nums1 []int, nums2 []int) float64 {
 	length := len(nums1) + len(nums2)
 
 	//分别令k=(length+1)/2, k=(length+2)/2,然后相加除以2,可以保证奇数长度与偶数长度均可得到中位数
-	return float64(findKth(nums1, 0, len(nums1)-1, nums2, 0, len(nums2)-1, (length+1)/2) + findKth(nums1, 0, len(nums1)-1, nums2, 0, len(nums2)-1, (length+2)/2))/2
+	return float64(findKth(nums1, 0, len(nums1)-1, nums2, 0, len(nums2)-1, (length+1)/2) + 
+	findKth(nums1, 0, len(nums1)-1, nums2, 0, len(nums2)-1, (length+2)/2))/2
 }
 
 // 从nums1的[start1, end1]和nums2的[start2, end2]中找到第k小的数
