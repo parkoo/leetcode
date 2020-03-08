@@ -13,7 +13,7 @@ func twoSum_3(nums []int, target int) []int {
 			return []int{v, i}
 		}
 
-		m[num] = i;
+		m[num] = i
 	}
 
 	return nil
