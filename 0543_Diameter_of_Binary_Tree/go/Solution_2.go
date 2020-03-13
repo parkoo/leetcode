@@ -13,7 +13,7 @@ import "math"
 * }
 */
 
-var max_path_2 int
+var max_path_2 int  // 通过全局变量记录最长路径
 
 func diameterOfBinaryTree_2(root *TreeNode) int {
 	max_path_2 = 0  // 刷新全局变量
@@ -22,7 +22,7 @@ func diameterOfBinaryTree_2(root *TreeNode) int {
 	return max_path_2		
 }
 
-// 计算以当前节点为根节点的树的深度
+// 计算以当前节点为根节点的树的深度以及最长路径
 func getDepthAndDiameterOfBinaryTree(root *TreeNode) int {
 	if root==nil {
 		return 0
@@ -31,7 +31,7 @@ func getDepthAndDiameterOfBinaryTree(root *TreeNode) int {
 	depth_left := getDepthAndDiameterOfBinaryTree(root.Left)
 	depth_right:= getDepthAndDiameterOfBinaryTree(root.Right)
 
-	// 当前节点左子树的深度与右子树的深度之和即为以当前节点为根的二叉树的最长路径
+	// 当前节点左子树的深度与右子树的深度之和即为以当前节点为根的二叉树的最长路径path
 	path := depth_left + depth_right
 	if path>max_path_2 {
 		max_path_2 = path
