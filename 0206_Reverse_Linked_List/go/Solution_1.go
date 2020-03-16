@@ -1,5 +1,7 @@
 package main
 
+// 迭代法
+// 时间复杂度：O(n)  空间复杂度：O(1)
 
  type ListNode struct {
     Val int
@@ -18,5 +20,5 @@ package main
 		 cur = next
 	 }
 
-	 return cur
+	 return pre
 }
