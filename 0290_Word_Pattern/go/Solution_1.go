@@ -7,7 +7,7 @@ import (
 // map的使用
 // 时间复杂度：O(n), 空间复杂度：O(n)
 
-func wordPattern(pattern string, s string) bool {
+func wordPattern_1(pattern string, s string) bool {
 	sArr := strings.Split(s, " ")
 	if len(pattern) != len(sArr) {
 		return false
