@@ -7,14 +7,11 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// 非递归中序遍历二叉树
+// 非递归中序遍历二叉树  借助一个栈实现
 // 时间复杂度：O(n)  空间复杂度：O(n)
 
 func inorderTraversal_1(root *TreeNode) []int {
 	res := make([]int, 0)
-	if root == nil {
-		return res
-	}
 
 	stack := make([]*TreeNode, 0)
 	for len(stack) > 0 || root != nil {
