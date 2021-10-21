@@ -9,7 +9,7 @@ func maxSubArray_1(nums []int) int {
 		return 0
 	}
 
-	// dp[i]表示考虑到第i个位置时，可以得到的最大子序和
+	// dp[i]表示以第i个位置为子序列结尾时，可以得到的最大子序和
 	dp := make([]int, n)
 	dp[0] = nums[0]
 
