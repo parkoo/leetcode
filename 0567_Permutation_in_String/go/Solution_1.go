@@ -29,7 +29,7 @@ func checkInclusion(s1 string, s2 string) bool {
 			cnt++
 		}
 
-		// 缩小左边界
+		// 持续缩小左边界
 		for cnt == len(ss1) {
 			// 检查是否满足条件
 			if r-l+1 == len(ss1) {
