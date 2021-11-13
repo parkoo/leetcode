@@ -5,7 +5,7 @@ package main
 // 稳定排序
 // 时间复杂度；O(nlgn)  空间复杂度：O(n)
 
-func mergeSort_2(arr []int) {
+func MergeSort_2(arr []int) {
 	merger_2(arr)
 }
 
