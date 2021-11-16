@@ -19,7 +19,7 @@ func QuickSort(nums []int, l, r, k int) int {
 	} else if p > k {
 		return QuickSort(nums, l, p-1, k)
 	} else {
-		return QuickSort(nums, p+1, r, k-p)
+		return QuickSort(nums, p+1, r, k)
 	}
 }
 
