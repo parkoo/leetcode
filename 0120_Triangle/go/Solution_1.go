@@ -1,9 +1,9 @@
 package main
 
 // 动态规划
-// 时间复杂度：O(mn)  空间复杂度：O(mn)
+// 时间复杂度：O(n^2)  空间复杂度：O(^2)
 
-func minimumTotal(triangle [][]int) int {
+func minimumTotal_1(triangle [][]int) int {
 	m := len(triangle)
 	n := len(triangle[m-1])
 	dp := make([][]int, m)
