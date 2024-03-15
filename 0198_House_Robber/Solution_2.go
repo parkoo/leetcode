@@ -2,10 +2,11 @@ package main
 
 // 动态规划之二  状态定义: dp[i]表示到达第i家时(可能打劫第i家也可能不打劫第i家)可以获取的全局最大金币数
 // 时间复杂度：O(n)  空间复杂度：O(1)
-func rob(nums []int) int {
+func rob_2(nums []int) int {
 	n := len(nums)
 
 	// dp[i] = max(nums[i]+dp[i-2], dp[i-1])
+	// 当前状态的计算只需要前两个状态，可以使用“滚动数组”节省空间
 	pre2, pre1 := 0, 0
 	res := 0
 	for i := 0; i < n; i++ {
