@@ -8,6 +8,11 @@ type TreeNode struct {
 }
 
 // 递归法
+// 若 root 为 p, q 的最近公共祖先， 则只有三种情况：
+//   <1> p, q分散在root的左右子树中
+//   <2> root == p, q 在 root 的左子树或右子树中
+//   <3> root == q, p 在 root 的左子树或右子树中
+
 // 时间复杂度：O(n)  空间复杂度：O(n)
 
 func lowestCommonAncestor_1(root, p, q *TreeNode) *TreeNode {
