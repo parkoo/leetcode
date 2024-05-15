@@ -11,28 +11,28 @@ import (
 func generateParenthesis_1(n int) []string {
 	res := make([]string, 0)
 
-	var backtrack func(open, close, max int, subStr string)
-	backtrack = func(open, close, max int, subStr string) {
-		if len(subStr) == 2*max {
+	var backtrack func(open, close int, subStr string)
+	backtrack = func(open, close int, subStr string) {
+		if len(subStr) == 2*n {
 			res = append(res, subStr)
 			return
 		}
 
 		// 左括号数小于n
-		if open < max {
+		if open < n {
 			subStr = fmt.Sprintf("%s%s", subStr, "(")
-			backtrack(open+1, close, max, subStr)
+			backtrack(open+1, close, subStr)
 			subStr = subStr[:len(subStr)-1]
 		}
 
 		// 右括号小于左括号数
 		if close < open {
 			subStr = fmt.Sprintf("%s%s", subStr, ")")
-			backtrack(open, close+1, max, subStr)
+			backtrack(open, close+1, subStr)
 			subStr = subStr[:len(subStr)-1]
 		}
 	}
 
-	backtrack(0, 0, n, "")
+	backtrack(0, 0, "")
 	return res
 }
