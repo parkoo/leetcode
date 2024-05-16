@@ -14,6 +14,7 @@ func hasCycle_2(head *ListNode) bool {
 		return false
 	}
 
+	// 以 slow != fast 作为循环判断
 	slow, fast := head, head.Next
 	for slow != fast {
 		if fast.Next == nil || fast.Next.Next == nil {
