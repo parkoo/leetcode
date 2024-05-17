@@ -43,16 +43,12 @@ func merge(l, r *ListNode) *ListNode {
 		cur = cur.Next
 	}
 
-	for l != nil {
+	if l != nil {
 		cur.Next = l
-		l = l.Next
-		cur = cur.Next
 	}
 
-	for r != nil {
+	if r != nil {
 		cur.Next = r
-		r = r.Next
-		cur = cur.Next
 	}
 
 	return dummyHead.Next
