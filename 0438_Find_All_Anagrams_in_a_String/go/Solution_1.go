@@ -9,21 +9,13 @@ func findAnagrams(s string, p string) []int {
 	smap, pmap := make(map[rune]int, 0), make(map[rune]int, 0)
 
 	for _, v := range ps {
-		if i, ok := pmap[v]; ok {
-			pmap[v] = i + 1
-		} else {
-			pmap[v] = 1
-		}
+		pmap[v]++
 	}
 
 	i, j := 0, 0
 	cnt := 0 // 记录滑动窗口中保存的p中字符的个数
 	for ; j < len(ss); j++ {
-		if v, ok := smap[ss[j]]; ok {
-			smap[ss[j]] = v + 1
-		} else {
-			smap[ss[j]] = 1
-		}
+		smap[ss[j]]++
 
 		if v, ok := pmap[ss[j]]; ok && smap[ss[j]] <= v {
 			cnt++
@@ -35,10 +27,10 @@ func findAnagrams(s string, p string) []int {
 			}
 
 			// 缩小左边界
-			smap[ss[i]] = smap[ss[i]] - 1
-			if _, ok := pmap[ss[i]]; ok && smap[ss[i]] < pmap[ss[i]] {
+			if _, ok := pmap[ss[i]]; ok && smap[ss[i]] <= pmap[ss[i]] {
 				cnt--
 			}
+			smap[ss[i]] = smap[ss[i]] - 1
 			i++
 		}
 	}
