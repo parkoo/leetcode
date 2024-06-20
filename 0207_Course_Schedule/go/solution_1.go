@@ -1,8 +1,9 @@
 package main
 
-// 思路:
+// 思路: BFS + 入度数组， 求图的拓扑排列, kahn算法
+// https://leetcode.cn/problems/course-schedule/solutions/250377/bao-mu-shi-ti-jie-shou-ba-shou-da-tong-tuo-bu-pai-/?envType=study-plan-v2&envId=top-100-liked
 
-// 时间复杂度: O(?)    空间复杂度: O(?)
+// 时间复杂度: O(v+e)    空间复杂度: O(v+e)  其中，v为课程数(图的节点数)，e为课程之间的关系数(图的边数)
 
 func canFinish_1(numCourses int, prerequisites [][]int) bool {
 
