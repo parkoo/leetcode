@@ -1,20 +1,12 @@
 package main
 
-// 二分查找
+// 思路: 二分查找
 // 时间复杂度：O(lgn)  空间复杂度：O(1)
 
 func search(nums []int, target int) int {
 	n := len(nums)
 	if n == 0 {
 		return -1
-	}
-
-	if n == 1 {
-		if nums[0] == target {
-			return 0
-		} else {
-			return -1
-		}
 	}
 
 	l, r := 0, n-1
