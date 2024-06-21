@@ -29,7 +29,7 @@ func largestRectangleArea_1(heights []int) int {
 		q = append(q, i)
 	}
 
-	// 清空栈内元素,确保以每个元素作为高，并计算其面积
+	// 需要清空栈内元素,确保以每个元素作为高，并计算其面积
 	for len(q) > 0 {
 		h := heights[q[len(q)-1]] // 以出栈元素为高，计算最大矩形的面积
 		q = q[:len(q)-1]
