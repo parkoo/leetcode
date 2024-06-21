@@ -7,6 +7,7 @@ package main
 
 func findMedianSortedArrays_2(nums1 []int, nums2 []int) float64 {
 	m, n := len(nums1), len(nums2)
+
 	// 保证入参的第一个数组长度小于等于第二个数组的长度
 	if m > n {
 		return findMedianSortedArrays_2(nums2, nums1)
