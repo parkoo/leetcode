@@ -5,8 +5,8 @@ package main
 // 时间复杂度：O(1)  空间复杂度：O(n)
 
 type MinStack struct {
-	stack1 []int
-	stack2 []int
+	stack1 []int // 数据栈
+	stack2 []int // 辅助栈
 }
 
 func Constructor() MinStack {
@@ -30,7 +30,6 @@ func (this *MinStack) Pop() {
 		this.stack1 = this.stack1[:len(this.stack1)-1]
 		this.stack2 = this.stack2[:len(this.stack2)-1]
 	}
-
 }
 
 func (this *MinStack) Top() int {
