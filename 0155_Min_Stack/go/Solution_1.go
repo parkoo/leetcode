@@ -1,5 +1,9 @@
 package main
 
+// 思路: 通过两个栈实现, 第二个辅助栈存放当前栈内的最小值
+
+// 时间复杂度：O(1)  空间复杂度：O(n)
+
 type MinStack struct {
 	stack1 []int
 	stack2 []int
