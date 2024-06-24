@@ -1,6 +1,7 @@
 package main
 
-// 寻找顺序对
+// 思路：寻找顺序对
+
 // 时间复杂度：O(n)  空间复杂度：O(1)
 
 func nextPermutation_1(nums []int) {
