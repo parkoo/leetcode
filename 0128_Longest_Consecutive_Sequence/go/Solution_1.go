@@ -13,6 +13,7 @@ func longestConsecutive(nums []int) int {
 	res := 0
 	for num := range m {
 		// 若前一个数字存在则 从前一个数字计算长度会更长，直接contine, 避免重复计算长度
+		// 这样可以保证 下述计算的开始位置一定是一个不连续序列的开始
 		if m[num-1] {
 			continue
 		}
