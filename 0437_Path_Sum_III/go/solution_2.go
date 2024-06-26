@@ -1,6 +1,8 @@
 package main
 
 // 思路: 前缀和求区间和 + DFS + 回溯
+// 此解法对前缀和的运用与 lc560 有异曲同工之处, 均是统计前缀和的频次
+
 // 时间复杂度：O(n)  空间复杂度：O(n)
 
 // Definition for a binary tree node.
