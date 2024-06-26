@@ -2,6 +2,10 @@ package main
 
 import "math"
 
+// 思路：递归法, 一次递归，递归过程中需要考虑两个值
+
+// 时间复杂度：O(n)  空间复杂度：O(n)
+
 // Definition for a binary tree node.
 type TreeNode struct {
 	Val   int
@@ -9,40 +13,44 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// 递归法
-// 时间复杂度：O(n)  空间复杂度：O(n)
+var res int = math.MinInt
 
-var maxSum int = math.MinInt16
+func maxPathSum(root *TreeNode) int {
+	res = math.MinInt
 
-func maxPathSum_1(root *TreeNode) int {
-	maxSum = math.MinInt16
-	helper(root)
-	return maxSum
+	dfs(root)
+
+	return res
 }
 
-func helper(root *TreeNode) int {
-	if root == nil {
+func dfs(node *TreeNode) int {
+	if node == nil {
 		return 0
 	}
 
-	// 直接过滤掉小于0的sum
-	leftSum := max(helper(root.Left), 0)
-	rightSum := max(helper(root.Right), 0)
+	leftSum := dfs(node.Left)
+	rightSum := dfs(node.Right)
 
-	// 更新全局最大值
-	curMaxSum := root.Val + leftSum + rightSum
-	if curMaxSum > maxSum {
-		maxSum = curMaxSum
+	// 计算以当前节点为根节点（可同时选择左、右子树）的最大路径和
+	// 用于和最终结果比较
+	// 该最大值的计算依赖于递归的返回值
+	curMaxVal := node.Val + max(leftSum, 0) + max(rightSum, 0) // 处理节点值为负值的情况
+	if curMaxVal > res {
+		res = curMaxVal
 	}
 
-	// 计算递归返回值，左右子树只可取其一，以保证路径不分叉
-	sum := root.Val + max(leftSum, rightSum)
-	return sum
+	// 计算以当前节点为根节点（只可选择左子树或者右子树之一）的最大路径和
+	// 用于递归的返回值
+	theMax := max(leftSum, rightSum)
+	curVal := node.Val + max(theMax, 0) // 处理节点值为负值的情况
+
+	return curVal
 }
 
-func max(i, j int) int {
-	if i > j {
-		return i
+func max(a, b int) int {
+	if a > b {
+		return a
 	}
-	return j
+
+	return b
 }
