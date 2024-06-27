@@ -10,14 +10,15 @@ type ListNode struct {
 }
 
 func hasCycle_2(head *ListNode) bool {
-	if head == nil || head.Next == nil {
+	slow, fast := head, head
+	if fast == nil || fast.Next == nil {
 		return false
 	}
+	slow = slow.Next
+	fast = fast.Next.Next
 
-	// 以 slow != fast 作为循环判断
-	slow, fast := head, head.Next
 	for slow != fast {
-		if fast.Next == nil || fast.Next.Next == nil {
+		if fast == nil || fast.Next == nil {
 			return false
 		}
 		slow = slow.Next
