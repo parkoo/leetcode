@@ -5,21 +5,22 @@ package main
 func subsets(nums []int) [][]int {
 	res := make([][]int, 0)
 
-	var backtrack func(start int, nums, subArr []int)
-	backtrack = func(start int, nums, subArr []int) {
+	var backtract func(nums []int, start int, sub []int)
+	backtract = func(nums []int, start int, sub []int) {
 		for i := start; i < len(nums); i++ {
-			subArr = append(subArr, nums[i])
-			arr := make([]int, len(subArr))
-			for i, v := range subArr {
-				arr[i] = v
-			}
-			res = append(res, arr)
-			backtrack(i+1, nums, subArr)
-			subArr = subArr[:len(subArr)-1]
+			sub = append(sub, nums[i])
+			item := make([]int, 0)
+			item = append(item, sub...)
+			res = append(res, item)
+
+			// 当前层选用第i个数字时，下一层的起始位置从i+1开始
+			backtract(nums, i+1, sub)
+			sub = sub[:len(sub)-1]
 		}
 	}
 
 	res = append(res, []int{})
-	backtrack(0, nums, []int{})
+	backtract(nums, 0, []int{})
+
 	return res
 }
