@@ -15,11 +15,12 @@ func maxProduct_1(nums []int) int {
 		return 0
 	}
 
-	res := nums[0]
-	preMax, preMin := nums[0], nums[0]
+	// 一直相乘避免溢出转换成float64
+	res := float64(nums[0])
+	preMax, preMin := float64(nums[0]), float64(nums[0])
 	for i := 1; i < n; i++ {
-		curMax := max(max(nums[i], nums[i]*preMax), nums[i]*preMin) // 以当前位置为结尾的子数组的最大乘积
-		curMin := min(min(nums[i], nums[i]*preMax), nums[i]*preMin) // 以当前位置为结尾的子数组的最小乘积
+		curMax := max(max(float64(nums[i]), float64(nums[i])*preMax), float64(nums[i])*preMin) // 以当前位置为结尾的子数组的最大乘积
+		curMin := min(min(float64(nums[i]), float64(nums[i])*preMax), float64(nums[i])*preMin) // 以当前位置为结尾的子数组的最小乘积
 
 		preMax, preMin = curMax, curMin
 
@@ -28,21 +29,19 @@ func maxProduct_1(nums []int) int {
 		}
 	}
 
-	return res
+	return int(res)
 }
 
-func max(a, b int) int {
+func max(a, b float64) float64 {
 	if a > b {
 		return a
 	}
-
 	return b
 }
 
-func min(a, b int) int {
+func min(a, b float64) float64 {
 	if a < b {
 		return a
 	}
-
 	return b
 }
