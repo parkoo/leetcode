@@ -9,10 +9,10 @@ package main
 func coinChange_3(coins []int, amount int) int {
 	dp := make([]int, amount+1)
 
-	initVal := amount + 1 // 定义一个不可能的值做初始化
+	initVal := amount + 1 // 定义一个不可能的且大于可能结果的初始值
 	dp[0] = 0
 	for i := 1; i <= amount; i++ {
-		dp[i] = initVal
+		dp[i] = initVal // 遍历的过程中同时作初始化
 		for j := 0; j < len(coins); j++ {
 			if i-coins[j] >= 0 {
 				dp[i] = min(dp[i], dp[i-coins[j]]+1)
