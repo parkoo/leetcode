@@ -51,7 +51,7 @@ func reverse(head, tail *ListNode) (*ListNode, *ListNode) {
 
 	pre := dummyHead
 	cur := head
-	for cur != nil {
+	for cur != nil { // 注意这里不能直接使用 cur != tail.Next,  因为当cur == tail的时候， tail.Next 会变成 cur.Next, 此时的tail.Next失去了原有的意义
 		next := cur.Next
 		cur.Next = pre
 		pre = cur
