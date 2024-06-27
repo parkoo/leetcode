@@ -1,41 +1,44 @@
 package main
 
-import "math"
-
+// 思路：一次递归遍历 递归中维护两个值  思路与lc124相似
 // 当前节点左子树的深度与右子树的深度之和即为以当前节点为根的二叉树的最长路径
-// 比较Solution_1，考虑在求树的深度的同时将最长路径一并求得，则只需一次递归中序遍历即可
+// 比较Solution_1，考虑在求树的深度的同时将最长路径一并求得，则只需一次递归遍历即可
+
 // 时间复杂度：O(n)  空间复杂度：O(h)  h为树的高度，每一层递归都需要分配栈空间，每一层中分配的空间为常数
- 
-/* type TreeNode struct {
-*     Val int
-*     Left *TreeNode
-*     Right *TreeNode
-* }
-*/
 
-var max_path_2 int  // 通过全局变量记录最长路径
-
-func diameterOfBinaryTree_2(root *TreeNode) int {
-	max_path_2 = 0  // 刷新全局变量
-
-	getDepthAndDiameterOfBinaryTree(root)
-	return max_path_2		
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-// 计算以当前节点为根节点的树的深度以及最长路径
-func getDepthAndDiameterOfBinaryTree(root *TreeNode) int {
-	if root==nil {
+var maxNodeNum int = 0
+
+func diameterOfBinaryTree_2(root *TreeNode) int {
+	maxNodeNum = 0
+	dfs(root)
+
+	res := maxNodeNum - 1 // 节点个数比路径个数多1
+	return res
+}
+
+// 遍历统计以每个节点为根节点的最大节点个数
+func dfs(node *TreeNode) int {
+	if node == nil {
 		return 0
 	}
 
-	depth_left := getDepthAndDiameterOfBinaryTree(root.Left)
-	depth_right:= getDepthAndDiameterOfBinaryTree(root.Right)
-
-	// 当前节点左子树的深度与右子树的深度之和即为以当前节点为根的二叉树的最长路径path
-	path := depth_left + depth_right
-	if path>max_path_2 {
-		max_path_2 = path
+	leftNum := dfs(node.Left)
+	rightNum := dfs(node.Right)
+	if leftNum+rightNum+1 > maxNodeNum {
+		maxNodeNum = leftNum + rightNum + 1
 	}
 
-	return int(math.Max(float64(depth_left), float64(depth_right))) + 1
+	theMax := leftNum
+	if rightNum > leftNum {
+		theMax = rightNum
+	}
+
+	return theMax + 1
+
 }
