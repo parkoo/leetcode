@@ -8,13 +8,15 @@ package main
 func minDistance_1(word1 string, word2 string) int {
 	m, n := len(word1), len(word2)
 
-	// dp[i][j] 表示word1[0:i] 与 word2[0:j] 的最小编辑距离
+	// dp[i][j] 表示word1[0:i-1] 与 word2[0:j-1] 的最小编辑距离
 	dp := make([][]int, m+1)
 	for i := 0; i <= m; i++ {
 		dp[i] = make([]int, n+1)
 	}
 
-	// 初始化
+	// 初始化边界
+	// dp[i][0] 可以看作word1[0:i-1] 与 “” 的最小编辑距离, 其值为word1[0:i-1]的长度
+	// dp[0][i] 可以看作word2[0:i-1] 与 “” 的最小编辑距离, 其值为word2[0:i-1]的长度
 	for i := 0; i <= m; i++ {
 		dp[i][0] = i
 	}
