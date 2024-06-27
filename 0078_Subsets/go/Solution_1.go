@@ -14,6 +14,11 @@ func subsets(nums []int) [][]int {
 			res = append(res, item)
 
 			// 当前层选用第i个数字时，下一层的起始位置从i+1开始
+			// 如 [1, 2, 3]
+			// 第一层可选 1 、2、 3
+			// 当第一层选1时，第二层可选2、3
+			// 当第一层选2时，第二层只可选3，
+			// 当第一层选择3时，到第二层直接退出
 			backtract(nums, i+1, sub)
 			sub = sub[:len(sub)-1]
 		}
