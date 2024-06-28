@@ -1,6 +1,6 @@
 package main
 
-// 思路：回溯法
+// 思路：回溯法 回溯函数带返回值
 
 func exist_2(board [][]byte, word string) bool {
 	m, n := len(board), len(board[0])

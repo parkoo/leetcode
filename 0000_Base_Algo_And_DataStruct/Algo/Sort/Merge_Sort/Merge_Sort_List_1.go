@@ -15,7 +15,9 @@ func mergeSortList_1(head *ListNode) *ListNode {
 		return head
 	}
 
-	// 快慢指针 将链表分成两部分
+	// 快慢指针 将链表均分成两部分
+	// 这里fast必须取head.Next, 若取了head, 则在链表节点为偶数时，切分不均匀，导致时间复杂度和空间复杂度上升
+	// 或者这里先加个虚拟头结点dummyHead, 可以令slow, fast := dummyHead, dummyHead, 效果也是均分的
 	slow, fast := head, head.Next
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
