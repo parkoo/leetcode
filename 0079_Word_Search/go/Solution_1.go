@@ -1,6 +1,6 @@
 package main
 
-// 回溯法
+// 思路：回溯法 回溯函数不带返回值
 
 func exist_1(board [][]byte, word string) bool {
 	res := false

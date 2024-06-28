@@ -1,27 +1,29 @@
 package main
 
-// 回溯法
+// 思路：回溯法
 
 func exist_2(board [][]byte, word string) bool {
-	dir := [][]int{[]int{1, 0}, []int{-1, 0}, []int{0, 1}, []int{0, -1}}
-	used := make([][]bool, len(board))
-	for i, _ := range used {
-		used[i] = make([]bool, len(board[0]))
+	m, n := len(board), len(board[0])
+
+	used := make([][]bool, m)
+	for i := 0; i < m; i++ {
+		used[i] = make([]bool, n)
 	}
 
-	var inArea func(x, y int) bool
-	inArea = func(x, y int) bool {
-		return x >= 0 && x < len(board) && y >= 0 && y < len(board[0])
+	dir := [][]int{{0, 1}, {0, -1}, {1, 0}, {-1, 0}}
+
+	inArea := func(x, y int) bool {
+		return x >= 0 && x < m && y >= 0 && y < n
 	}
 
-	var backtrack func(start, x, y int, board [][]byte, word string) bool
-	backtrack = func(start, x, y int, board [][]byte, word string) bool {
-		if board[x][y] != []byte(word[start : start+1])[0] {
-			return false
+	var backtract func(board [][]byte, x, y int, i int) bool
+	backtract = func(board [][]byte, x, y int, i int) bool {
+		if i == len(word)-1 && board[x][y] == word[i] {
+			return true
 		}
 
-		if start == len(word)-1 {
-			return true
+		if board[x][y] != word[i] {
+			return false
 		}
 
 		used[x][y] = true
@@ -29,20 +31,21 @@ func exist_2(board [][]byte, word string) bool {
 			nextX := x + dir[k][0]
 			nextY := y + dir[k][1]
 
-			if inArea(nextX, nextY) && !used[nextX][nextY] && backtrack(start+1, nextX, nextY, board, word) {
-				return true
+			if inArea(nextX, nextY) && !used[nextX][nextY] {
+				if backtract(board, nextX, nextY, i+1) {
+					return true
+				}
 			}
 		}
-
 		used[x][y] = false
+
 		return false
 	}
 
-	for i := 0; i < len(board); i++ {
-		for j := 0; j < len(board[0]); j++ {
-			res := backtrack(0, i, j, board, word)
-			if res {
-				return res
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			if backtract(board, i, j, 0) {
+				return true
 			}
 		}
 	}
