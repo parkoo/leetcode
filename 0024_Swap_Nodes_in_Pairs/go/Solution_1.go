@@ -16,14 +16,21 @@ func swapPairs(head *ListNode) *ListNode {
 
 	dummyHead := new(ListNode)
 	dummyHead.Next = head
-	pre := dummyHead
+	pre := dummyHead // 记录待翻转区间的前驱节点
 
 	slow, fast := head, head.Next
 	for fast != nil {
+		// 记录待翻转区间的后继节点
 		next := fast.Next
+
+		// 翻转待翻转区间
 		fast.Next = slow
-		slow.Next = next
+
+		// 连接翻转去区间的前驱结点和后继节点
 		pre.Next = fast
+		slow.Next = next
+
+		// 翻转区间后移
 		pre = slow
 		slow = slow.Next
 		if slow != nil {
