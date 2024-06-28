@@ -25,6 +25,8 @@ func canPartition_2(nums []int) bool {
 
 	for i := 1; i < len(nums); i++ {
 		num := nums[i]
+		// dp[i][j] = dp[i-1][j] || dp[i-1][j-num]
+		// 对于二维dp来说，dp[i][j] 依赖 dp[i-1][j]、 dp[i-1][j-num], 从右侧遍历可以避免dp[i-1][j-num]被覆盖
 		for j := target; j >= num; j-- {
 			dp[j] = dp[j] || dp[j-num]
 		}
