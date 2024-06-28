@@ -1,6 +1,6 @@
 package main
 
-// 思路: 动态规划 一维空间
+// 思路: 动态规划 一维空间  物品只可用一次的背包问题，外层循环为物品
 // dp[i][j] 表示考虑（可选放入也可选择不放入）将第i个物品放入容量为j的背包，是否可以恰好填满容量为j的背包
 // 进一步优化为一维空间
 
@@ -17,6 +17,8 @@ func canPartition_2(nums []int) bool {
 
 	target := sum / 2
 	dp := make([]bool, target+1)
+
+	// 初始化 先装第一个物品 只考虑第一个物品
 	for i := 0; i <= target; i++ {
 		if i == nums[0] {
 			dp[i] = true
