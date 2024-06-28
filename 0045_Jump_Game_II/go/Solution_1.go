@@ -4,7 +4,7 @@ package main
 
 // 时间复杂度：O(n^2)  空间复杂度：O(n)
 
-func jump(nums []int) int {
+func jump_1(nums []int) int {
 	n := len(nums)
 	if n == 1 {
 		return 0
