@@ -1,6 +1,7 @@
 package main
 
-// 动态规划
+// 思路：二维动态规划，dp空间同时也是存储结果空间
+
 // 时间复杂度：O(n^2)  空间复杂度：O(1) 不包含结果存储
 
 func generate_1(numRows int) [][]int {
