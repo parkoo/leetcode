@@ -1,8 +1,8 @@
 package main
 
-// 回溯法
+// 思路：回溯法
 
-func partition(s string) [][]string {
+func partition_1(s string) [][]string {
 	res := make([][]string, 0)
 
 	// 判断回文串

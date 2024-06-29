@@ -15,6 +15,8 @@ func longestPalindrome_2(s string) string {
 
 	maxLen := 1   // 记录最长回文串的长度
 	res := s[0:1] // 回文串
+
+	// dp[i][j] 依赖dp[i+1][j-1] 外层为end, 内层为start
 	for end := 1; end < n; end++ {
 		for start := 0; start < end; start++ {
 			// end - start == 0, 表示此时只针对一个字符，必定是回文串 如：a
