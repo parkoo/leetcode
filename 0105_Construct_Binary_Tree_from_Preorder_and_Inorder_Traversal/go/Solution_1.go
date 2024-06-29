@@ -1,14 +1,15 @@
 package main
 
+// 思路：递归法
+
+// 时间复杂度：O(n)  空间复杂度：O(n)
+
 // Definition for a binary tree node.
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
 	Right *TreeNode
 }
-
-// 递归法
-// 时间复杂度：O(n)  空间复杂度：O(n)
 
 func buildTree_1(preorder []int, inorder []int) *TreeNode {
 	return helper(preorder, inorder)
