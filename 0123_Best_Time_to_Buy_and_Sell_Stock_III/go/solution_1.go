@@ -12,14 +12,12 @@ func maxProfit(prices []int) int {
 	buy1, sell1 := -prices[0], 0
 	buy2, sell2 := -prices[0], 0
 
+	// 状态依赖: sell1 -> buy2 -> sell2
 	for i := 1; i < len(prices); i++ {
-		preBuy1, preSell1 := buy1, sell1
-		preBuy2, preSell2 := buy2, sell2
-
-		buy1 = max(preBuy1, -prices[i])
-		sell1 = max(preSell1, preBuy1+prices[i])
-		buy2 = max(preBuy2, preSell1-prices[i])
-		sell2 = max(preSell2, preBuy2+prices[i])
+		buy1 = max(buy1, -prices[i])
+		sell1 = max(sell1, buy1+prices[i]) // 这里的buy1, 直接依赖上一步算出的结果
+		buy2 = max(buy2, sell1-prices[i])  // 这里的sell1, 直接依赖上一步算出的结果
+		sell2 = max(sell2, buy2+prices[i]) // 这里的buy2, 直接依赖上一步算出的结果
 	}
 
 	return sell2
