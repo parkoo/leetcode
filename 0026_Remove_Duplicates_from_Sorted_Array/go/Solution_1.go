@@ -1,9 +1,10 @@
 package main
 
-// 双指针 快慢指针
+// 思路： 双指针 快慢指针
+
 // 时间复杂度：O(n)  空间复杂度：O(1)
 
-func removeDuplicates(nums []int) int {
+func removeDuplicates_1(nums []int) int {
 	if len(nums) == 0 {
 		return 0
 	}
