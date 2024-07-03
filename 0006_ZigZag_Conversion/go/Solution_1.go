@@ -1,58 +1,49 @@
 package main
 
-// 开辟二维空间，摆出要求形状再读取
-// 时间复杂度：O(n)  空间复杂度：O(n)
+// 思路: 找规律 模拟法
 
-func convert_1(s string, numRows int) string {
+// 时间复杂度: O(n)    空间复杂度: O(1)
 
-	if numRows==1 {
+func convert(s string, numRows int) string {
+	res := make([]rune, 0)
+	if numRows == 1 {
 		return s
 	}
 
-	str := ""
-	
-	// 计算二维空间的列数
-	cols := len(s)/(2*numRows-2)*2  // cols为最终的列数
-	temp := len(s)%(2*numRows-2)
-	if temp>0 && temp<=numRows {
-		cols += 1
-	}else if temp>numRows {
-		cols += 2
-	}
+	ss := []rune(s)
 
-	// 开辟二维空间，按要求将字符串摆出＇Z＇型
-	grid := make([][]string, numRows)
-	for i:=0; i<numRows; i++ {
-		grid[i] = make([]string, cols)
-	}
+	// 一行一行处理
+	for i := 0; i < numRows; i++ {
+		downFlag := true
 
-	index := 0
-	for i:=0; i<cols; i++ {
-		if i%2==0 {
-			for j:=0; j<numRows; j++ {
-				if index<len(s) {
-					grid[j][i] = s[index:index+1]
-					index++
-				}			
+		if i >= len(ss) {
+			break
+		}
+
+		cur := i
+		for cur < len(ss) {
+			res = append(res, ss[cur])
+
+			// 计算steps (下一步的坐标)
+			// numRows == 1 时， (numRows - (i+1)) * 2 ==  i * 2 == 0
+			// 需要提前处理 numRows == 1 的情况
+
+			// 第 0 行时：steps = (numRows - (i+1)) * 2
+			// 第 numRows-1 行时：steps = i * 2
+			// 其他行时：若向下走则 steps = (numRows - (i+1)) * 2，若向上走则 steps = i * 2, 同一行中，两者交替
+			steps := (numRows - (i + 1)) * 2
+			if !downFlag || i == numRows-1 {
+				steps = i * 2
 			}
-		}else {
-			for j:= numRows-2; j>0; j-- {
-				if index<len(s) {
-					grid[j][i] = s[index:index+1]
-					index++
-				}	
+
+			cur += steps
+
+			// 非第0行和非第numRows-1行， 需要交替downFlag
+			if i != 0 && i != numRows-1 {
+				downFlag = !downFlag
 			}
 		}
 	}
 
-	// 从＇Z＇型排列中读取字符串
-	for i:=0; i<numRows; i++ {
-		for j:=0; j<cols; j++ {
-			if grid[i][j] != "" {
-				str += grid[i][j]
-			}
-		}
-	}
-
-	return str
+	return string(res)
 }
