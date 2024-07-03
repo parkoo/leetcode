@@ -1,8 +1,10 @@
 package main
 
+// 思路： 去除无效空格，整体翻转 再对每个单词翻转
+
 // 时间复杂度：O(n)  空间复杂度：O(n)
 
-func reverseWords(s string) string {
+func reverseWords_1(s string) string {
 	// 去除头尾空格
 	start, end := 0, len(s)-1
 	for s[start] == ' ' {
