@@ -1,9 +1,10 @@
 package main
 
-// 双指针  滑动窗口
+// 思路：双指针  滑动窗口
+
 // 时间复杂度：O(n)  空间复杂度：O(1)
 
-func minSubArrayLen(target int, nums []int) int {
+func minSubArrayLen_1(target int, nums []int) int {
 	cnt := len(nums) + 1
 	i, j := 0, -1 // 滑动串口为[i,j], j<i时表示窗口中无元素，j=i时表示窗口中有一个元素
 	sum := 0
