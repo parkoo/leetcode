@@ -1,6 +1,8 @@
 package main
 
-// 遍历时记录状态
+// 思路：遍历时记录状态
+// 小3x3宫格用一维数组表示，坐标映射方式为[i,j] -> i/3*3 + j/3 = i + j/3
+
 // 时间复杂度：O(1)  空间复杂度：O(1)
 
 func isValidSudoku_1(board [][]byte) bool {
