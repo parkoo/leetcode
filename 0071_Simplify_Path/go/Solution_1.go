@@ -4,10 +4,11 @@ import (
 	"strings"
 )
 
-// 栈的应用
+// 思路: 栈的应用
+
 // 时间复杂度：O(n)  空间复杂度：O(n)
 
-func simplifyPath(path string) string {
+func simplifyPath_1(path string) string {
 	ss := strings.Split(path, "/")
 	stack := make([]string, 0)
 	for i := 0; i < len(ss); i++ {
