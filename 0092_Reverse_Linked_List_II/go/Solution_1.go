@@ -1,6 +1,7 @@
 package main
 
-// 头插法 反转
+// 思路：头插法 反转
+
 // 时间复杂度：O(n)  空间复杂度：O(1)
 
 // Definition for singly-linked list.
