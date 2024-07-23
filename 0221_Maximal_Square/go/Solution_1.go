@@ -1,6 +1,7 @@
 package main
 
-// 动态规划
+// 思路：动态规划
+
 // 时间复杂度；O(mn)  空间复杂度：O(mn)
 
 func maximalSquare(matrix [][]byte) int {
@@ -17,9 +18,8 @@ func maximalSquare(matrix [][]byte) int {
 	for i := 1; i <= m; i++ {
 		for j := 1; j <= n; j++ {
 			// 虚拟边界，dp数组向左向上多一层边界
-			if matrix[i-1][j-1] == '0' {
-				dp[i][j] = 0
-			} else {
+			if matrix[i-1][j-1] == '1' {
+				// 取短板
 				dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
 			}
 
