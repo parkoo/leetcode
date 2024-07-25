@@ -4,10 +4,11 @@ import (
 	"strings"
 )
 
-// 双指针 对撞指针
-// 时间复杂度：O(n)  空间复杂度：O(1)
+//思路： 双指针 对撞指针
 
-func isPalindrome(s string) bool {
+// 时间复杂度：O(n)  空间复杂度：O(n)
+
+func isPalindrome_1(s string) bool {
 	ss := strings.ToUpper(s)
 	sb := strings.Builder{}
 	for _, v := range []rune(ss) {
