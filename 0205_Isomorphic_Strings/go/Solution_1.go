@@ -1,9 +1,10 @@
 package main
 
-// map妙用
+// 思路：map妙用
+
 // 时间复杂度：O(n)  空间复杂度：O(n)
 
-func isIsomorphic(s string, t string) bool {
+func isIsomorphic_1(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
 	}
