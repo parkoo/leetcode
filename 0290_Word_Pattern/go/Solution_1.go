@@ -4,7 +4,8 @@ import (
 	"strings"
 )
 
-// map的使用
+// 思路: map的使用
+
 // 时间复杂度：O(n), 空间复杂度：O(n)
 
 func wordPattern_1(pattern string, s string) bool {
