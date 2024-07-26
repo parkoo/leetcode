@@ -1,6 +1,6 @@
 package main
 
-// 思路： map妙用
+// 思路： map妙用 同lc090
 
 // 时间复杂度：O(n)  空间复杂度：O(n)
 

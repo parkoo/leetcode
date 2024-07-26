@@ -1,9 +1,10 @@
 package main
 
-// 字符串 词频统计
+// 思路 ：字符串 词频统计
+
 // 时间复杂度：O(n)  空间复杂度：O(1)
 
-func isAnagram(s string, t string) bool {
+func isAnagram_1(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
 	}
