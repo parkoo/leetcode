@@ -2,6 +2,8 @@ package main
 
 // 思路 ：完全背包最值问题，物品在外层背包在内层， 更好的解法见solution_5, 先设置好初值方便处理
 
+// 同lc0279
+
 // 时间复杂度：O(sn)　　空间复杂度：O(s)　其中，s为总数额,n为硬币种类
 
 func coinChange_1(coins []int, amount int) int {

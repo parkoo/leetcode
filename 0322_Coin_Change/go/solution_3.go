@@ -5,6 +5,8 @@ package main
 // 定义 dp[i] 表示凑出i数值所需要的最少硬币数
 // 状态转移：dp[i] = min(dp[i], dp[i-coins[j]] + 1) when 0<=j<=len(coins)
 
+// 同lc0279
+
 // 时间复杂度：O(sn)　　空间复杂度：O(s)　其中，s为总数额,n为硬币种类
 
 func coinChange_3(coins []int, amount int) int {
