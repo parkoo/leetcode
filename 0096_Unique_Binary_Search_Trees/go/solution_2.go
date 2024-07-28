@@ -3,7 +3,7 @@ package main
 // 思路: 卡塔兰数公式
 // C(0) = 1,  C(n+1) = C(n) * 2(2n+1) / (n+2)
 
-// 时间复杂度：O(n^2)  空间复杂度：O(n)
+// 时间复杂度：O(n)  空间复杂度：O(1)
 
 func numTrees_2(n int) int {
 
