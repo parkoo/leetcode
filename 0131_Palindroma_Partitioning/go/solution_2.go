@@ -15,7 +15,8 @@ func partition(s string) [][]string {
 
 	// dp[i][j] 依赖dp[i+1][j-1] 外层为end, 内层为start
 	for end := 1; end < len(s); end++ {
-		for start := 0; start <= end; start++ {
+		// 从大到小遍历
+		for start := end; start >= 0; start-- {
 			if (end-start <= 2 || dp[start+1][end-1]) && s[start] == s[end] {
 				dp[start][end] = true
 			}

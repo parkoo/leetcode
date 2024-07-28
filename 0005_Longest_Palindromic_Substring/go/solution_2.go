@@ -2,6 +2,9 @@ package main
 
 // 思路：动态规划  dp[i][j] == true 表示 s[i,j]为回文串
 
+// 注意区别lc0516, 其为寻找最长回文子序列（中间可以删去一些字符）
+// 而本题为寻找最长回文子串（中间不能删去字符，需要连续）
+
 // 时间复杂度：O(n^2)  空间复杂度：O(n^2)
 
 func longestPalindrome_2(s string) string {
@@ -18,7 +21,8 @@ func longestPalindrome_2(s string) string {
 
 	// dp[i][j] 依赖dp[i+1][j-1] 外层为end, 内层为start
 	for end := 1; end < n; end++ {
-		for start := 0; start < end; start++ {
+		// 从大到小遍历
+		for start := end; start >= 0; start-- {
 			// end - start == 0, 表示此时只针对一个字符，必定是回文串 如：a
 			// end - start == 1, 表示此时针对两个字符，若两个字符相等则是回文串 如：aa
 			// end - start == 2, 表示此时针对三个字符，中间的字符不用管，两边的字符相等即为回文串 如：aba
