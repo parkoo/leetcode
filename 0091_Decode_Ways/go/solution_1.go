@@ -6,7 +6,6 @@ package main
 
 func numDecodings(s string) int {
 	n := len(s)
-
 	if n == 0 || s[0]-'0' == 0 {
 		return 0
 	}
