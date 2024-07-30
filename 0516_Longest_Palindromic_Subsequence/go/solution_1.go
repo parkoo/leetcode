@@ -7,7 +7,7 @@ package main
 
 // 时间复杂度: O(n^2)    空间复杂度: O(n^2)
 
-func longestPalindromeSubseq(s string) int {
+func longestPalindromeSubseq_1(s string) int {
 	n := len(s)
 
 	// dp[i][j]=k, 表示 s[i:j+1] 区间内的最长回文子序列的长度为k（s[i]、s[j] 可以是回文子序列的一部分也可以不是）
