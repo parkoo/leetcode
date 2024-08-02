@@ -12,33 +12,38 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-var maxNodeNum int = 0
-
 func diameterOfBinaryTree_2(root *TreeNode) int {
-	maxNodeNum = 0
-	dfs(root)
+	res := 0
 
-	res := maxNodeNum - 1 // 节点个数比路径个数多1
+	// 返回当前节点的深度(非nil的根节点的深度为1)
+	// 在递归过程中统计以当前节点为根节点的最大直径
+	var dfs func(node *TreeNode) int
+	dfs = func(node *TreeNode) int {
+		if node == nil {
+			return 0
+		}
+
+		leftDepth, rightDepth := dfs(node.Left), dfs(node.Right)
+
+		// 在递归过程中统计以当前节点为根节点的最大直径
+		// 以当前节点为根节点的最大直径等于当前节点左子树的深度+当前节点右子树的深度
+		curPathLen := leftDepth + rightDepth
+		if curPathLen > res {
+			res = curPathLen
+		}
+
+		// 返回当前节点的深度
+		return max(leftDepth, rightDepth) + 1
+	}
+
+	dfs(root)
 	return res
 }
 
-// 遍历统计以每个节点为根节点的最大节点个数
-func dfs(node *TreeNode) int {
-	if node == nil {
-		return 0
+func max(a, b int) int {
+	if a > b {
+		return a
 	}
 
-	leftNum := dfs(node.Left)
-	rightNum := dfs(node.Right)
-	if leftNum+rightNum+1 > maxNodeNum {
-		maxNodeNum = leftNum + rightNum + 1
-	}
-
-	theMax := leftNum
-	if rightNum > leftNum {
-		theMax = rightNum
-	}
-
-	return theMax + 1
-
+	return b
 }
