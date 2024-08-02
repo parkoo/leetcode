@@ -16,6 +16,8 @@ type TreeNode struct {
 var res int = math.MinInt
 
 func maxPathSum(root *TreeNode) int {
+	// 注意 可能出现所有节点的值都是负数，最终结果可能为负值
+	// 初始值设置为最小值，而不是0
 	res = math.MinInt
 
 	dfs(root)
