@@ -15,26 +15,35 @@ type TreeNode struct {
 
 // 时间复杂度：O(n)  空间复杂度：O(n)
 
-func lowestCommonAncestor_1(root, p, q *TreeNode) *TreeNode {
-	if root == nil {
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+
+	return dfs(root, p, q)
+}
+
+// 定义递归函数dfs， 表示求解以node为根节点时，p、q的公共祖先
+func dfs(node, p, q *TreeNode) *TreeNode {
+	if node == nil {
 		return nil
 	}
 
-	// 返回值是待寻找公共节点的两个节点之一
-	if root.Val == p.Val || root.Val == q.Val {
-		return root
+	// 当前节点是待寻找公共节点的两个节点之一
+	if node == p || node == q {
+		return node
 	}
 
-	// 递归的返回值若不为空，则便已经是最近的祖先
-	left := lowestCommonAncestor_1(root.Left, p, q)
-	right := lowestCommonAncestor_1(root.Right, p, q)
+	// 递归当前节点的左右子树
+	left := dfs(node.Left, p, q)
+	right := dfs(node.Right, p, q)
+	// 当前节点的左右子树分别包含p、q，则当前节点就是p、q的最近公共祖先
 	if left != nil && right != nil {
-		return root
+		return node
 	}
 
-	if left == nil {
-		return right
+	// 当前节点的左子树中包含p、q
+	if left != nil {
+		return left
 	}
 
-	return left
+	// 当前节点的右子树中包含p、q
+	return right
 }
