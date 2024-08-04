@@ -1,9 +1,10 @@
 package main
 
 // 思路: 二分查找
+
 // 时间复杂度：O(lgn)  空间复杂度：O(1)
 
-func search(nums []int, target int) int {
+func search_1(nums []int, target int) int {
 	n := len(nums)
 	if n == 0 {
 		return -1
