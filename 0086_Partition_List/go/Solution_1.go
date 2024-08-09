@@ -29,7 +29,7 @@ func partition_1(head *ListNode, x int) *ListNode {
 	}
 
 	curSmall.Next = large.Next
-	curLarge.Next, large = nil, nil
+	curLarge.Next = nil // ### 注意这里一定要把 curLarge.Next 设置为nil 否则可能形成环， 如[2,1] x=2 这种情况
 
 	return small.Next
 }
