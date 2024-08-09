@@ -23,7 +23,7 @@ func hIndex(citations []int) int {
 	left, right := 0, n
 	for left < right {
 		// 这里做个+1处理， 使得偶数个数的范围时, mid取中间靠右侧的值, 防止后面因为 left == mid 导致死循环
-		mid := left + (right-left)/2 + 1
+		mid := left + (right-left+1)/2
 		cnt := getCnt(mid) // 以mid作为引用因子，大于等于该引用因子的文章数量cnt, 如果该数量过大，cnt>=mid, 说说明引用因子mid 选择小了，可尝试扩大，反之缩小
 
 		// 最终返回的结果是left, left需要是一个有效值
