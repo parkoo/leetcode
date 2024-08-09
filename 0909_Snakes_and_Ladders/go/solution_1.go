@@ -67,8 +67,9 @@ func snakesAndLadders_1(board [][]int) int {
 				}
 			}
 		}
-
-		step++
+		if len(q) > 0 {
+			step++
+		}
 	}
 
 	return -1
