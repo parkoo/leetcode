@@ -23,6 +23,8 @@ func numTrees_1(n int) int {
 	dp := make([]int, n+1)
 	dp[0] = 1
 	dp[1] = 1
+
+	// 当前有i个节点，分别以节点j（j<=i）作为根节点进行二分搜索树的构建
 	for i := 2; i <= n; i++ {
 		for j := 1; j <= i; j++ {
 			leftCnt := dp[j-1]

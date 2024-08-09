@@ -16,13 +16,15 @@ func generateTrees(n int) []*TreeNode {
 	return dfs(1, n)
 }
 
-// 由[start, end]节点可以构成的不同单位二分搜索树
+// 由[start, end]节点可以构成的不同的二分搜索树
+// 分别计算由节点start~end作为根节点构建出的二分搜索树
 func dfs(start, end int) []*TreeNode {
 	if start > end {
 		return []*TreeNode{nil}
 	}
 
 	curTrees := make([]*TreeNode, 0)
+	// 选择节点i作为根节点
 	for i := start; i <= end; i++ {
 		leftTrees := dfs(start, i-1)
 		rightTrees := dfs(i+1, end)
