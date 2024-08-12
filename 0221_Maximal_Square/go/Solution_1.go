@@ -8,7 +8,7 @@ func maximalSquare(matrix [][]byte) int {
 	m := len(matrix)
 	n := len(matrix[0])
 
-	// dp[i][i] 表示以坐标点(i, j)为右下角的值为'1'最大正方形的边长
+	// dp[i][j] 表示以坐标点(i, j)为右下角的值为'1'最大正方形的边长
 	dp := make([][]int, m+1) // 虚拟边界
 	for i := 0; i <= m; i++ {
 		dp[i] = make([]int, n+1) // 虚拟边界
