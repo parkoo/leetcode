@@ -3,6 +3,7 @@ package main
 import "math"
 
 // 思路: 二分查找, 死循环式二分查找
+// 关键点：题目说明了可假设 nums[-1] = nums[n] = -∞
 
 // 时间复杂度: O(logn)    空间复杂度: O(1)
 
