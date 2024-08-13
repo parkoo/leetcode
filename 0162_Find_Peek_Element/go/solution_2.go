@@ -2,6 +2,7 @@ package main
 
 // 思路: 二分查找
 // 关键点：题目说明了可假设 nums[-1] = nums[n] = -∞
+// 对于所有有效的 i 都有 nums[i] != nums[i + 1]
 
 // 时间复杂度: O(logn)    空间复杂度: O(1)
 
