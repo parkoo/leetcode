@@ -20,3 +20,7 @@ func rand10_1() int {
 		return 5 + second
 	}
 }
+
+func rand7() int {
+	return 0
+}
