@@ -1,6 +1,7 @@
 package main
 
-// 双指针-滑动窗口
+// 思路：双指针-滑动窗口
+
 // 时间复杂度：O(n)  空间复杂度：O(1)
 
 func equalSubstring_2(s string, t string, maxCost int) int {
